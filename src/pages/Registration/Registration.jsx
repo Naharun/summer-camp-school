@@ -33,7 +33,7 @@ const Registration = () => {
     return (
         <>
             <Helmet>
-                <title>Bistro Boss | Registration</title>
+                <title>Instrument Of Percussion || Registration</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">

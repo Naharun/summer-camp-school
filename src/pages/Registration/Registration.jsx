@@ -87,7 +87,7 @@ const Registration = () => {
                                     <span className="label-text">Confirm Password</span>
                                 </label>
                                 <input type="text" {...register("confirm password", { required: true })} name="confirm password" placeholder="confirm password" className="input input-bordered" />
-                                {errors.name && <span className="text-red-700">Name is required</span>}
+                                {errors.name && <span className="text-red-700">Confirm Password is required</span>}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-neutral" type="submit" value="registration" />

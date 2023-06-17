@@ -29,7 +29,7 @@ const ClassCard = ({ classData }) => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Class added on the selected list.',
+                        title: 'Class added',
                         showConfirmButton: false,
                         timer: 1500
                       })
@@ -38,7 +38,7 @@ const ClassCard = ({ classData }) => {
         }
         else{
             Swal.fire({
-                title: 'Please login to order the food',
+                title: 'Please login',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -54,15 +54,15 @@ const ClassCard = ({ classData }) => {
 
     return (
         <>
-            <div className="card w-96 bg-base-100 shadow-xl" >
+            <div className="card w-96 bg-base-100 shadow-2xl" >
                 <figure className="h-1/2"><img className="w-full"  src={photo} alt="class" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{className}</h2>
-                    <p>Instructor Name: <span className="font-semibold ">{instructorName}</span></p>
-                    <p>Price: $ <span className="font-semibold ">{price}</span></p>
-                    <p>Available Seats: <span className="font-semibold ">{availableSeats}</span></p>
+                    <p>Instructor Name: <span className="font-medium">{instructorName}</span></p>
+                    <p>Price: $ <span className="font-medium ">{price}</span></p>
+                    <p>Available Seats: <span className="font-medium ">{availableSeats}</span></p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> handleSelectClass (classData)}  className="btn btn-primary">Book Now</button>
+                        <button onClick={()=> handleSelectClass (classData)}  className="btn btn-accent">Apply Now</button>
                     </div>
                 </div>
             </div>

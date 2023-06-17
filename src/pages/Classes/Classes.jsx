@@ -15,8 +15,8 @@ const Classes = () => {
             })
     }, [])
     if (loading) {
-        return <div className="text-center py-60 bg-cyan-950">
-            <h1 className="text-2xl font-bold text-white">Loading<span className="text-secondary">.....</span></h1>
+        return <div className="text-center py-60">
+            <h1 className="text-2xl font-bold text-black">Loading<span className="text-secondary">.....</span></h1>
             <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
         </div>
     }

@@ -62,7 +62,7 @@ const ClassCard = ({ classData }) => {
                     <p>Price: $ <span className="font-semibold ">{price}</span></p>
                     <p>Available Seats: <span className="font-semibold ">{availableSeats}</span></p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> handleSelectClass (classData)} disabled={isAdmin || isInstructor} className="btn btn-primary">Book Now</button>
+                        <button onClick={()=> handleSelectClass (classData)}  className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
             </div>

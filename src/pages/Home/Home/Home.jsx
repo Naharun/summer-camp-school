@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import TopSliderSection from "../TopSliderSection/TopSliderSection";
-import PopularClassesSection from "../PopularClassesSection/PopularClassesSection";
 import Review from "../../ExtraSection/Review";
 import PopularInstructors from "./PopularInstructors";
+import Classes from "../../Classes/Classes";
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
             <TopSliderSection></TopSliderSection>
             <PopularInstructors></PopularInstructors>
             <Review></Review>
-            <PopularClassesSection></PopularClassesSection>
+            <Classes></Classes>
         </div>
     );
 };

@@ -1,13 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaHome, FaUsers, FaWallet, } from "react-icons/fa";
-import { useContext } from "react";
-import { AuthContext } from "../pages/provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-    const {user} = useContext(AuthContext);
     const [isAdmin]= useAdmin();
     const [isInstructor]=useInstructor();
     return (
@@ -38,7 +35,7 @@ const Dashboard = () => {
                         <div className="divider"></div>
                         <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
                         <li><NavLink to="/classes"> Classes</NavLink></li>
-                        <li><NavLink to="/instructors">Instructors</NavLink></li>
+                        <li><NavLink to="/instructor">Instructors</NavLink></li>
                     </ul>
                 </div>
             </div>

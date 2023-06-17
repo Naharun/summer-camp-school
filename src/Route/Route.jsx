@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
                 element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
             },
             {
-                path: 'selectedClass',
+                path: 'mySelectedClass',
                 element: <MySelectedClass></MySelectedClass>
             },
         ]

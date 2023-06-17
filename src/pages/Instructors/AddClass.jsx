@@ -60,7 +60,7 @@ const AddClass = () => {
                                 <label className="label">
                                     <span className="label-text">Instructor Name</span>
                                 </label>
-                                <input type="text" name="instructorName"  placeholder="Seller Name" className="input input-bordered" />
+                                <input type="text" name="instructorName" defaultValue={user?.displayName} readOnly  placeholder="instructor Name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

@@ -12,19 +12,35 @@ const TopSliderSection = () => {
             <Carousel>
                 <div>
                     <img src={img1} />
-                    <p className="legend">Instrument Of Percussion</p>
+                    <p className="legend line-clamp-3"><span className="text-2xl font-serif font-bold">Instrument Of Percussion</span><br />
+                        <span className="text-xl font-serif">It is a summer camp school. <br />
+                            Here you are taught the musical instrument of your choice.
+                        </span>
+                    </p>
                 </div>
                 <div>
                     <img src={img2} />
-                    <p className="legend">Instrument Of Percussion</p>
+                    <p className="legend line-clamp-3"><span className="text-2xl font-serif font-bold">Instrument Of Percussion</span><br />
+                        <span className="text-xl font-serif">It is a summer camp school. <br />
+                            Here you are taught the musical instrument of your choice.
+                        </span>
+                    </p>
                 </div>
                 <div>
                     <img src={img3} />
-                    <p className="legend">Instrument Of Percussion</p>
+                    <p className="legend line-clamp-3"><span className="text-2xl font-serif font-bold">Instrument Of Percussion</span><br />
+                        <span className="text-xl font-serif">It is a summer camp school. <br />
+                            Here you are taught the musical instrument of your choice.
+                        </span>
+                    </p>
                 </div>
                 <div>
                     <img src={img5} />
-                    <p className="legend">Instrument Of Percussion</p>
+                    <p className="legend line-clamp-3"><span className="text-2xl font-serif font-bold">Instrument Of Percussion</span><br />
+                        <span className="text-xl font-serif">It is a summer camp school. <br />
+                            Here you are taught the musical instrument of your choice.
+                        </span>
+                    </p>
                 </div>
             </Carousel>
         </>

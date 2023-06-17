@@ -5,29 +5,41 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const Registration = () => {
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
-    const {createUser, updateUserProfile} =useContext(AuthContext);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(data.name, data.photoURL)
-            .then(() =>{
-                console.log('user profile info updated');
-                reset();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User Created Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  navigate('/');
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL }
+                        fetch('https://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'User Created Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Ok'
+                                    })
+                                    setUser(loggedUser)
+                                    reset();
+                                    navigate('/');
+                                }
+                            })
+                    })
             })
-        })
     }
 
     return (
@@ -53,7 +65,7 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" {...register("name", { required: true })}  placeholder="photo url" className="input input-bordered" />
+                                <input type="text" {...register("name", { required: true })} placeholder="photo url" className="input input-bordered" />
                                 {errors.name && <span className="text-red-700">Photo URL is required</span>}
                             </div>
                             <div className="form-control">

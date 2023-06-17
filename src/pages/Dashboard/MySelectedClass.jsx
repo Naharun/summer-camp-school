@@ -2,7 +2,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import { FaAmazonPay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../Route/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -31,7 +30,7 @@ const MySelectedClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 if (proceed) {
-                    fetch(`http://localhost:5000/selected/${id}`, {
+                    fetch(`https://summer-camp-school-server-beige.vercel.app/selected/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -54,8 +53,8 @@ const MySelectedClass = () => {
     }
 
     if (loading) {
-        return <div className="text-center py-60 w-full bg-black">
-            <h1 className="text-2xl font-bold text-white">Loading<span className="text-secondary">.....</span></h1>
+        return <div className="text-center py-60 w-full ">
+            <h1 className="text-2xl font-bold text-black">Loading<span className="text-secondary">.....</span></h1>
             <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
         </div>
     }
@@ -91,7 +90,7 @@ const MySelectedClass = () => {
                                 <td>{classData.className}</td>
                                 <td className="text-center">{classData.price}</td>
                                 <td className="text-center">{classData.availableSeats}</td>
-                                <th><Link className="text-4xl text-black"><FaAmazonPay></FaAmazonPay></Link></th>
+                                <th><Link className="text-4xl text-black">PAY</Link></th>
                                 <th><button onClick={()=>handleDelete (classData._id)} className="btn btn-sm btn-error text-white"> Delete</button></th>
                             </tr>)
                         }

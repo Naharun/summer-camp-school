@@ -4,13 +4,12 @@ import { Helmet } from "react-helmet-async";
 const Instructors = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users/instructor')
+        fetch('https://summer-camp-school-server-beige.vercel.app/users/instructor')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
-console.log(users);
     return (
-        <div className="bg-slate-200 py-5 px-4">
+        <div className=" py-5 px-4">
             <Helmet>
                 <title>Teaching Corner | Instructors</title>
             </Helmet>

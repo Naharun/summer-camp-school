@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAuth from "../../Route/useAuth";
 
 
@@ -14,8 +15,8 @@ const AddClass = () => {
         const availableSeats = form.availableSeats.value;
         const details = form.details.value;
         const add = { photo,  instructorName, className, instructorEmail, price, availableSeats, details,}
-        console.log(add);
-        fetch('http://localhost:5000/addClass', {
+        
+        fetch('https://summer-camp-school-server-beige.vercel.app/addClass', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -24,8 +25,16 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                form.reset();
-                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your Class Added Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    form.reset();
+                }
             })
     }
     return (

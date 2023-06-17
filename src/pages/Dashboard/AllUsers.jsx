@@ -8,7 +8,7 @@ const AllUsers = () => {
     const { loading } = useAuth();
     const [axiosSecure]= useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('http://localhost:5000/users')
+        const res = await axiosSecure.get('https://summer-camp-school-server-beige.vercel.app/users')
         return res.data;
     })
 
@@ -19,7 +19,7 @@ const AllUsers = () => {
         </div>
     }
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://summer-camp-school-server-beige.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const AllUsers = () => {
             })
     };
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://summer-camp-school-server-beige.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -66,7 +66,7 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 if (proceed) {
-                    fetch(`http://localhost:5000/users/${id}`, {
+                    fetch(`https://summer-camp-school-server-beige.vercel.app/users/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

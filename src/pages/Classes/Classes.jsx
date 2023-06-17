@@ -8,7 +8,7 @@ const Classes = () => {
     const [classes, setClasses] = useState([]);
     const { loading} = useContext(AuthContext);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://summer-camp-school-server-beige.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 setClasses(data);

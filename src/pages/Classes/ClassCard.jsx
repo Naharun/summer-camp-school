@@ -1,24 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Route/useAuth";
-// import Swal from "sweetalert2";
-// import useAdmin from "../../hooks/useAdmin";
-// import useInstructor from "../../hooks/useInstructor";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const ClassCard = ({ classData }) => {
-    // const navigate = useNavigate();
-    // const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor();
+    const navigate = useNavigate();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const {user} = useAuth();
-    const { _id, img, className, availableSeats, price, instructorName, instructorEmail, details } = classData;
+    const { _id, photo, className, availableSeats, price, instructorName, instructorEmail, details } = classData;
     
 
     const handleSelectClass = (classData) => {
-        console.log(classData);
         if(user && user.email){
-            const selectedClass = {selectedClassId: _id, img,  className, availableSeats, price, instructorName, instructorEmail,details, email: user.email}
-            fetch('https://teaching-corner-server.vercel.app/selected', {
+            const selectedClass = {selectedClassId: _id, photo,  className, availableSeats, price, instructorName, instructorEmail,details, email: user.email}
+            fetch('https://summer-camp-school-server-beige.vercel.app/selected', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -57,14 +55,14 @@ const ClassCard = ({ classData }) => {
     return (
         <>
             <div className="card w-96 bg-base-100 shadow-xl" >
-                <figure className="h-1/2"><img src={img} alt="class" /></figure>
+                <figure className="h-1/2"><img className="w-full"  src={photo} alt="class" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{className}</h2>
                     <p>Instructor Name: <span className="font-semibold ">{instructorName}</span></p>
                     <p>Price: $ <span className="font-semibold ">{price}</span></p>
                     <p>Available Seats: <span className="font-semibold ">{availableSeats}</span></p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> handleSelectClass (classData)} disabled className="btn btn-primary">Book Now</button>
+                        <button onClick={()=> handleSelectClass (classData)} disabled={isAdmin || isInstructor} className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
             </div>

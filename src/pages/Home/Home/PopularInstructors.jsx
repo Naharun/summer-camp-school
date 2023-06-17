@@ -10,7 +10,7 @@ const PopularInstructors = () => {
 
     return (
         <div className=" py-5 px-4">
-            <h1 className="text-sxl font-bold text-center">Popular Instructors Here</h1>
+            <h1 className="text-3xl font-bold font-serif text-center">Our Popular Instructors</h1>
             <hr />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 space-y-4">
                 {

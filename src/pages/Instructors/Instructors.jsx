@@ -11,7 +11,7 @@ const Instructors = () => {
     return (
         <div className=" py-5 px-4">
             <Helmet>
-                <title>Teaching Corner | Instructors</title>
+                <title>Instrument Of Percussion | Instructors</title>
             </Helmet>
             <h1 className="text-2xl font-serif font-bold text-center">Here Are All The Instructors</h1>
             <div className="divider"></div>

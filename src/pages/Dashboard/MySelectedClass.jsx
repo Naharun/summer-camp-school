@@ -54,16 +54,16 @@ const MySelectedClass = () => {
 
     if (loading) {
         return <div className="text-center py-60 w-full ">
-            <h1 className="text-2xl font-bold text-black">Loading<span className="text-secondary">.....</span></h1>
-            <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
+            <h1 className="text-2xl font-bold text-black">loading<span className="text-warning">.....</span></h1>
+            <progress className="progress progress-warning mt-4 mx-auto w-1/4"></progress>
         </div>
     }
     return (
         <div>
             <Helmet>
-                <title>Teaching Corner | Dashboard | My Selected Classes</title>
+                <title>Instrument Of Percussion | Dashboard | My Selected Classes</title>
             </Helmet>
-            <h1 className='text-3xl lg:text-5xl font-bold text-center lg:my-8 my-3'>My Selected Classes</h1>
+            <h1 className='text-2xl font-bold lg:text-5xl text-center lg:my-8 my-3'>My Selected Classes</h1>
             <div className="divider"></div>
             <div className="overflow-x-auto w-[900px]">
                 <table className="table">

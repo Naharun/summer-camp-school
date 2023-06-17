@@ -14,8 +14,8 @@ const AllUsers = () => {
 
     if (loading) {
         return <div className="text-center py-60 bg-cyan-950">
-            <h1 className="text-2xl font-bold text-white">Loading<span className="text-secondary">.....</span></h1>
-            <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
+            <h1 className="text-3xl font-bold text-white">loading<span className="text-warning">.....</span></h1>
+            <progress className="progress progress-warning mt-4 mx-auto w-1/4"></progress>
         </div>
     }
     const handleMakeAdmin = user => {
@@ -75,7 +75,7 @@ const AllUsers = () => {
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'success',
-                                    title: 'Your Class data deleted successfully!',
+                                    title: 'Class data deleted successfully!',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
@@ -91,9 +91,9 @@ const AllUsers = () => {
     return (
         <div>
             <Helmet>
-                <title>Teaching Corner | Dashboard | All Users</title>
+                <title>Instrument Of Percussion | Dashboard | All Users</title>
             </Helmet>
-            <h1 className='text-3xl lg:text-5xl font-bold text-center lg:my-8 my-3'>All Users</h1>
+            <h1 className='text-2xl text-center lg:text-5xl font-bold lg:my-8 my-3'>All Users</h1>
             <div className="divider"></div>
             <div className="overflow-x-auto">
                 <table className="table ">

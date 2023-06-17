@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import { FaTrashAlt, FaUser, FaUserTie } from "react-icons/fa";
 import useAuth from "../../Route/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -9,7 +8,7 @@ const AllUsers = () => {
     const { loading } = useAuth();
     const [axiosSecure]= useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure('http://localhost:5000/users')
+        const res = await axiosSecure.get('http://localhost:5000/users')
         return res.data;
     })
 
@@ -19,7 +18,6 @@ const AllUsers = () => {
             <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
         </div>
     }
-    // make admin operation
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
@@ -38,7 +36,6 @@ const AllUsers = () => {
                 }
             })
     };
-    // make instructor operation
     const handleMakeInstructor = user => {
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: 'PATCH'
@@ -57,7 +54,6 @@ const AllUsers = () => {
                 }
             })
     };
-    // User delete operation
     const handleDelete = id => {
         const proceed = Swal.fire({
             title: 'Are you sure?',
@@ -123,11 +119,11 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role? user.role:"Student"}</td>
-                                <td> <button disabled={user.role === "admin"} onClick={() => handleMakeAdmin(user)} className="btn btn-sm btn-primary"><FaUser></FaUser> Make Admin</button></td>
+                                <td> <button disabled={user.role === "admin"} onClick={() => handleMakeAdmin(user)} className="btn  btn-primary"> Make Admin</button></td>
                                 <td>
-                                     <button disabled={user.role === "instructor"} onClick={() => handleMakeInstructor(user)} className="btn btn-sm btn-secondary"><FaUserTie></FaUserTie> Make Instructor</button>
+                                     <button disabled={user.role === "instructor"} onClick={() => handleMakeInstructor(user)} className="btn  btn-secondary"> Make Instructor</button>
                                 </td>
-                                <th><button onClick={() => handleDelete(user._id)} className="btn btn-sm btn-error text-white"><FaTrashAlt></FaTrashAlt> Delete</button></th>
+                                <th><button onClick={() => handleDelete(user._id)} className="btn  btn-error text-white"> Delete</button></th>
                             </tr>)
                         }
                     </tbody>

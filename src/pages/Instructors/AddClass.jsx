@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import useAuth from "../../Route/useAuth";
 
 
 const AddClass = () => {
-    const {user}= useContext(AuthContext);
+    const {user}= useAuth();
     const handleAddClass = event => {
         event.preventDefault();
         const form = event.target;
@@ -25,7 +24,7 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // form.reset();
+                form.reset();
                 console.log(data)
             })
     }
@@ -78,8 +77,8 @@ const AddClass = () => {
                                 </label>
                                 <input type="text" name="details" placeholder="Details" className="input input-bordered" />
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-warning">Add A Class</button>
+                            <div className="form-control w-1/2 mx-auto mt-6">
+                                <button className="btn btn-secondary">Add A Class</button>
                             </div>
                         </form>
                     </div>

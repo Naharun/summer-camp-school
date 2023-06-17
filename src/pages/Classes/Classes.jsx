@@ -16,8 +16,8 @@ const Classes = () => {
     }, [])
     if (loading) {
         return <div className="text-center py-60">
-            <h1 className="text-2xl font-bold text-black">Loading<span className="text-secondary">.....</span></h1>
-            <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
+            <h1 className="text-3xl font-bold text-black">loading<span className="text-warning">.....</span></h1>
+            <progress className="progress progress-warning mt-4 mx-auto w-1/4"></progress>
         </div>
     }
 
@@ -26,8 +26,8 @@ const Classes = () => {
             <Helmet>
                 <title>Teaching Corner | Classes</title>
             </Helmet>
-            <h1 className="text-3xl font-bold text-center">Our Classes Here !!<br/>
-            Hope it will be useful for you .
+            <h1 className="text-3xl font-serif font-bold text-center">Our Classes Are Here !!<br/>
+            Hope it will be useful for you.
             </h1>
             <div className="divider"></div>
             <div className='grid md:grid-cols-2 space-y-4 lg:grid-cols-3 mx-auto w-full'>

@@ -13,7 +13,7 @@ const Instructors = () => {
             <Helmet>
                 <title>Teaching Corner | Instructors</title>
             </Helmet>
-            <h1 className="text-3xl font-bold text-center">All Instructors Here</h1>
+            <h1 className="text-2xl font-serif font-bold text-center">Here Are All The Instructors</h1>
             <div className="divider"></div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 space-y-4">
                 {

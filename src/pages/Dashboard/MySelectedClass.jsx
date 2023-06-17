@@ -39,7 +39,7 @@ const MySelectedClass = () => {
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'success',
-                                    title: 'Your toy data deleted successfully!',
+                                    title: 'Deleted successfully!',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })

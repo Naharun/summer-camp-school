@@ -26,7 +26,9 @@ const Classes = () => {
             <Helmet>
                 <title>Teaching Corner | Classes</title>
             </Helmet>
-            <h1 className="text-3xl font-bold text-center">Our Classes Here</h1>
+            <h1 className="text-3xl font-bold text-center">Our Classes Here !!<br/>
+            Hope it will be useful for you .
+            </h1>
             <div className="divider"></div>
             <div className='grid md:grid-cols-2 space-y-4 lg:grid-cols-3 mx-auto w-full'>
                 {

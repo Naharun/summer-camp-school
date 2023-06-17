@@ -29,9 +29,9 @@ const ManageClasses = () => {
     return (
         <div>
             <Helmet>
-                <title>Teaching Corner | Dashboard | Manage Classes</title>
+                <title>Instrument Of Percussion | Dashboard | Manage Classes</title>
             </Helmet>
-            <h1 className='text-3xl lg:text-5xl font-bold text-center lg:my-8 my-3'>New Added Classes</h1>
+            <h1 className='text-xl lg:text-5xl font-bold font-serif text-center lg:my-8 my-3'>Added New Classes</h1>
             <div className="divider"></div>
             <div className="overflow-x-auto">
                 <table className="table ">
@@ -45,7 +45,7 @@ const ManageClasses = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody className="bg-slate-900 text-white p-40">
+                    <tbody className="bg-stone-800 text-white p-44">
                         {
                             classes.map((classData, index) => <tr className="rounded-md" key={classData._id}>
                                 <td>{(index + 1)}</td>
@@ -59,7 +59,7 @@ const ManageClasses = () => {
                                 <td> Role {classData.instructorEmail}</td>
                                 <th>
                                     <div className="flex space-x-5">
-                                        <button className="btn">Approve</button>
+                                        <button className="btn btn-warning">Approve</button>
                                         <button className="btn btn-error" onClick={() => window.my_modal_5.showModal(classData._id)}>Delete</button>
                                     </div>
                                 </th>

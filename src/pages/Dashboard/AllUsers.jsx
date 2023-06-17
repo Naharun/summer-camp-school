@@ -119,9 +119,9 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role? user.role:"Student"}</td>
-                                <td> <button disabled={user.role === "admin"} onClick={() => handleMakeAdmin(user)} className="btn  btn-primary"> Make Admin</button></td>
+                                <td> <button disabled={user.role === "admin"} onClick={() => handleMakeAdmin(user)} className="btn  btn-info"> Make Admin</button></td>
                                 <td>
-                                     <button disabled={user.role === "instructor"} onClick={() => handleMakeInstructor(user)} className="btn  btn-secondary"> Make Instructor</button>
+                                     <button disabled={user.role === "instructor"} onClick={() => handleMakeInstructor(user)} className="btn  btn-accent"> Make Instructor</button>
                                 </td>
                                 <th><button onClick={() => handleDelete(user._id)} className="btn  btn-error text-white"> Delete</button></th>
                             </tr>)

@@ -12,8 +12,8 @@ const Review = () => {
             />
                 3 Reviews</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div className="bg-red-300 rounded-2xl p-7 font-bold">
-                    <h2 className=" gap-3">Tanvir Sifat
+                <div className="bg-slate-700 rounded-3xl p-8 font-bold">
+                    <h2 className=" gap-3">Sultana Forhad
                         <ReactStars
                             count={5}
                             size={24}

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../Routes/useAuth';
+import useAuth from '../Route/useAuth';
 
 
 const useAxiosSecure = () => {

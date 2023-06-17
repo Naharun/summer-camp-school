@@ -1,9 +1,138 @@
+import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import { FaTrashAlt, FaUser, FaUserTie } from "react-icons/fa";
+import useAuth from "../../Route/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
+    const { loading } = useAuth();
+    const [axiosSecure]= useAxiosSecure();
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await axiosSecure('http://localhost:5000/users')
+        return res.data;
+    })
+
+    if (loading) {
+        return <div className="text-center py-60 bg-cyan-950">
+            <h1 className="text-2xl font-bold text-white">Loading<span className="text-secondary">.....</span></h1>
+            <progress className="progress progress-secondary mt-4 mx-auto w-1/4"></progress>
+        </div>
+    }
+    // make admin operation
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    };
+    // make instructor operation
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    };
+    // User delete operation
+    const handleDelete = id => {
+        const proceed = Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (proceed) {
+                    fetch(`http://localhost:5000/users/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Your Class data deleted successfully!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                refetch();
+                            }
+                        })
+                }
+            }
+        })
+
+    }
+
     return (
         <div>
-            <h1>All Users Here</h1>
-            <div className='divider'></div>
+            <Helmet>
+                <title>Teaching Corner | Dashboard | All Users</title>
+            </Helmet>
+            <h1 className='text-3xl lg:text-5xl font-bold text-center lg:my-8 my-3'>All Users</h1>
+            <div className="divider"></div>
+            <div className="overflow-x-auto">
+                <table className="table ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map((user, index) => <tr className="rounded-md" key={user._id}>
+                                <td>{(index + 1)}</td>
+                                <td>
+                                    <div className="mask mask-squircle w-12 h-12">
+                                        <img src={user.photo} />
+                                    </div>
+                                </td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.role? user.role:"Student"}</td>
+                                <td> <button disabled={user.role === "admin"} onClick={() => handleMakeAdmin(user)} className="btn btn-sm btn-primary"><FaUser></FaUser> Make Admin</button></td>
+                                <td>
+                                     <button disabled={user.role === "instructor"} onClick={() => handleMakeInstructor(user)} className="btn btn-sm btn-secondary"><FaUserTie></FaUserTie> Make Instructor</button>
+                                </td>
+                                <th><button onClick={() => handleDelete(user._id)} className="btn btn-sm btn-error text-white"><FaTrashAlt></FaTrashAlt> Delete</button></th>
+                            </tr>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

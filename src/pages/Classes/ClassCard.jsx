@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../Route/useAuth";
 // import Swal from "sweetalert2";
-// import useAuth from "../../Routes/useAuth";
 // import useAdmin from "../../hooks/useAdmin";
 // import useInstructor from "../../hooks/useInstructor";
 
@@ -9,48 +10,48 @@ const ClassCard = ({ classData }) => {
     // const navigate = useNavigate();
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
-    // const {user} = useAuth();
+    const {user} = useAuth();
     const { _id, img, className, availableSeats, price, instructorName, instructorEmail, details } = classData;
     
 
     const handleSelectClass = (classData) => {
         console.log(classData);
-        // if(user && user.email){
-        //     const selectedClass = {selectedClassId: _id, img,  className, availableSeats, price, instructorName, instructorEmail,details, email: user.email}
-        //     fetch('https://teaching-corner-server.vercel.app/selected', {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(selectedClass)
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if(data.insertedId){
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 icon: 'success',
-        //                 title: 'Class added on the selected list.',
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //               })
-        //         }
-        //     })
-        // }
-        // else{
-        //     Swal.fire({
-        //         title: 'Please login to order the food',
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Login now!'
-        //       }).then((result) => {
-        //         if (result.isConfirmed) {
-        //           navigate('/login', {state: {from: location}})
-        //         }
-        //       })
-        // }
+        if(user && user.email){
+            const selectedClass = {selectedClassId: _id, img,  className, availableSeats, price, instructorName, instructorEmail,details, email: user.email}
+            fetch('https://teaching-corner-server.vercel.app/selected', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Class added on the selected list.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }
+        else{
+            Swal.fire({
+                title: 'Please login to order the food',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login', {state: {from: location}})
+                }
+              })
+        }
     }
 
     return (

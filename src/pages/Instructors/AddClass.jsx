@@ -29,7 +29,7 @@ const AddClass = () => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your Class Added Successfully!',
+                        title: 'Class Added Successfully!',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -41,8 +41,8 @@ const AddClass = () => {
         <div className="hero min-h-screen bg-base-200 w-[1000px]">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
-                    <div className="card-body w-[800px]">
-                        <h2 className="text-2xl font-bold">Add A Class</h2>
+                    <div className="card-body w-[500px]">
+                        <h2 className="text-3xl font-semibold text-orange-950">Add A Class</h2>
                         <form onSubmit={handleAddClass} >
                             <div className="form-control">
                                 <label className="label">
@@ -87,7 +87,7 @@ const AddClass = () => {
                                 <input type="text" name="details" placeholder="Details" className="input input-bordered" />
                             </div>
                             <div className="form-control w-1/2 mx-auto mt-6">
-                                <button className="btn btn-secondary">Add A Class</button>
+                                <button className="btn btn-neutral">Add A Class</button>
                             </div>
                         </form>
                     </div>
